@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>FastjsonAnalysis</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
+
+        <!-- JaCoCo ReportPath -->
+        <!-- <sonar.coverage.jacoco.xmlReportPaths>${maven.multiModuleProjectDirectory}/jacoco-coverage/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths> -->
+
+        <jacoco.coverageExperiment.version>0.8.8</jacoco.coverageExperiment.version>
+        <maven-surefire.version>3.0.0-M6</maven-surefire.version>
+
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>coverageProfile</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>fastjson</artifactId>
+                    <version>1.2.79</version>
+                    <scope>system</scope>
+                    <systemPath>${basedir}/lib/fastjson-1.2.79-fat.jar</systemPath>
+                </dependency>
+                <dependency>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                    <version>1.1</version>
+                </dependency>
+                <dependency>
+                    <groupId>concurrent</groupId>
+                    <artifactId>concurrent</artifactId>
+                    <version>1.0</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>org.jacoco.agent</artifactId>
+                    <classifier>runtime</classifier>
+                    <version>${jacoco.coverageExperiment.version}</version>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${jacoco.coverageExperiment.version}</version>
+                        <executions>
+                            <!-- NOTE THAT AUTOMATIC REPORTING IS USELESS, AS THE SOURCE FILES OF FastJSON ARE NEEDED: -->
+                            <!-- GENERATE THE REPORTS OFFLINE AS DESCRIBED IN  jacocolibSnippets.txt -->
+                            <execution>
+                                <id>TheExecutionId</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                                <configuration>
+                                    <!-- ... ... -->
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire.version}</version>
+                        <executions>
+                            <execution>
+                                <id>TheExecutionId-Surefire</id>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <reuseForks>false</reuseForks>
+                            <useUnlimitedThreads>true</useUnlimitedThreads>
+                            <!-- ... ... -->
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <!-- ... ... -->
+    </profiles>
+
+</project>
