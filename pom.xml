@@ -15,8 +15,8 @@
 
         <jacoco.agent>-javaagent:jars/jacocoagent.jar</jacoco.agent>
 
-        <!-- <sonar.organization>danilodamico</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url> -->
+        <sonar.organization>danilodamico</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <dependencies>
