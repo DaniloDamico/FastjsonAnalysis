@@ -32,7 +32,7 @@ public class JSONFieldTest extends TestCase {
     public static Collection parametersCollection() {
        return Arrays.asList(new Object[][] {
           { 123, "xx", "{\"id\":123}" },
-          { -6, "xx", "{\"id\":-6}" },
+          { -7, "xx", "{\"id\":-7}" },
           { 0, null, "{\"id\":0}" },
           { -123, "", "{\"id\":-123}" }
        });
