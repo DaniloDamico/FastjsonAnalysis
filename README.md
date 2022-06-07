@@ -7,7 +7,7 @@ Studio della coverage su FastJSON (i.e. Progetto "1+").
 * binari su Maven Central: https://search.maven.org/artifact/com.alibaba/fastjson/1.2.79/jar
 * release completa su Maven Central: https://repo1.maven.org/maven2/com/alibaba/fastjson/1.2.79/
 
-Classi da testare:
+Classi da reimplementare:
 
 * fastjson/src/test/java/com/alibaba/json/bvt/serializer/MapTest.java
 * fastjson/src/test/java/com/alibaba/json/bvt/serializer/JSONFieldTest.java
